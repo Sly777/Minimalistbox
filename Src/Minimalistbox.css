@@ -1,0 +1,62 @@
+.Minimalistbox-main {
+  background-color: white;
+  border: 1px solid #aaaaaa;
+  width: 300px;
+  position: relative; }
+  .Minimalistbox-main .Minimalistbox-items {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
+    border: 1px solid #aaaaaa; }
+    .Minimalistbox-main .Minimalistbox-items ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 150px;
+      overflow: auto; }
+      .Minimalistbox-main .Minimalistbox-items ul li {
+        display: block; }
+        .Minimalistbox-main .Minimalistbox-items ul li:hover {
+          background-color: #ff7428;
+          color: white; }
+  .Minimalistbox-main.Minimalistbox-active .Minimalistbox-items {
+    display: block; }
+    .Minimalistbox-main.Minimalistbox-active .Minimalistbox-items span {
+      cursor: pointer; }
+  .Minimalistbox-main .Minimalistbox-result {
+    cursor: pointer; }
+    .Minimalistbox-main .Minimalistbox-result span {
+      cursor: pointer;
+      display: block; }
+  .Minimalistbox-main .Minimalistbox-hiddenselect {
+    display: none; }
+  .Minimalistbox-main.styled {
+    background: transparent url(../img/minSel-head.png) no-repeat left top;
+    width: 230px;
+    height: 32px;
+    border: none; }
+    .Minimalistbox-main.styled .Minimalistbox-result span {
+      padding: 5px 11px;
+      color: #979595; }
+    .Minimalistbox-main.styled .Minimalistbox-items {
+      background: transparent url(../img/minSel-contain-hover.png) no-repeat left bottom;
+      border: none;
+      min-height: 40px; }
+      .Minimalistbox-main.styled .Minimalistbox-items ul {
+        margin-bottom: 18px;
+        max-height: 174px;
+        width: 224px; }
+      .Minimalistbox-main.styled .Minimalistbox-items ul li {
+        margin: 1px 10px 1px 4px;
+        padding: 0 0 0 7px;
+        color: #979595; }
+        .Minimalistbox-main.styled .Minimalistbox-items ul li:hover, .Minimalistbox-main.styled .Minimalistbox-items ul li.Minimalistbox-selected {
+          color: black;
+          background-color: transparent; }
+    .Minimalistbox-main.styled.Minimalistbox-active {
+      width: 237px;
+      height: 32px;
+      background: transparent url(../img/minSel-head-hover.png) no-repeat left top; }
