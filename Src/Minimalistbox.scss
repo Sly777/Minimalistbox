@@ -1,0 +1,101 @@
+$width: 300px;
+$itemsMaxHeight: 150px;
+$colorMain: #FFFFFF;
+$colorBorder: #AAAAAA;
+$colorHover: #FF7428;
+
+.Minimalistbox-main {
+  background-color: $colorMain;
+  border: 1px solid $colorBorder;
+  width: $width;
+  position: relative;
+
+  .Minimalistbox-items {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    background-color: $colorMain;
+    border: 1px solid $colorBorder;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: $itemsMaxHeight;
+      overflow: auto;
+
+      li {
+        display: block;
+
+        &:hover {
+          background-color: $colorHover;
+          color: white;
+        }
+      }
+    }
+  }
+
+  &.Minimalistbox-active .Minimalistbox-items {
+    display: block;
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  .Minimalistbox-result {
+    cursor: pointer;
+    span {
+      cursor: pointer;
+      display: block;
+    }
+  }
+
+  .Minimalistbox-hiddenselect {
+    display: none;
+  }
+
+  &.styled {
+    background: transparent url(../img/minSel-head.png) no-repeat left top;
+    width: 230px;
+    height: 32px;
+    border: none;
+
+    .Minimalistbox-result span {
+      padding: 5px 11px;
+      color: #979595;
+    }
+
+    .Minimalistbox-items {
+      background: transparent url(../img/minSel-contain-hover.png) no-repeat left bottom;
+      border: none;
+      min-height: 40px;
+
+      ul {
+        margin-bottom: 18px;
+        max-height: 174px;
+        width: 224px;
+      }
+
+      ul li {
+        margin: 1px 10px 1px 4px;
+        padding: 0 0 0 7px;
+        color: #979595;
+
+        &:hover,
+        &.Minimalistbox-selected {
+          color: black;
+          background-color: transparent;
+        }
+      }
+    }
+
+    &.Minimalistbox-active {
+      width: 237px;
+      height: 32px;
+      background: transparent url(../img/minSel-head-hover.png) no-repeat left top;
+    }
+  }
+}
