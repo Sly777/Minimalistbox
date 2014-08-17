@@ -98,6 +98,7 @@
             $Items.find("." + this._name + "-selected").removeClass(this._name + "-selected");
             $Item.addClass(this._name + "-selected");
             $select.find("option[value='" + $Item.data("value") + "']").prop("selected", true);
+            $select.trigger("change");
             this.changeSelectedItem($Item.text());
             this.$parent.toggleClass(this._name + "-active");
         },
