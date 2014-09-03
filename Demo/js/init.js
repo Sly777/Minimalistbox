@@ -158,5 +158,8 @@
 							$window.unbind('scroll.overflow_parallax');
 				}
 
-            $('.cstmSelect').Minimalistbox();
+            $('.cstmSelect').Minimalistbox({
+            	placeholder: 'Choose number',
+            	clear: true
+            });
 		});

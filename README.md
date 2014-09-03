@@ -2,10 +2,9 @@ Minimalistbox
 =============
 
 Minimalistbox - Minimalist Select List Boxes Jquery Plugin
-version: 0.1
 
-Uncompressed Version : 1.04KB gzipped (2.93KB uncompressed)
-Compressed Version : 798 bytes gzipped (2.05KB uncompressed)
+Uncompressed Version : 1.57KB gzipped (6.49KB uncompressed)
+Compressed Version : 1.1KB gzipped (3.36KB uncompressed)
 
 Website
 -------
@@ -18,11 +17,19 @@ This is just selectbox. There are lots of selectbox plugin on internet and they 
 
 Features
 --------
-- Just 798 bytes (gzipped)
+- Just 1.1KB (gzipped)
 - Using name, id and classes of your selectbox when creating
-- SASS Support
+- __SASS__ & __AMD__ Support
 - IE6+, Chrome, Firefox, Opera, ...etc. Support
+- It triggers your selectbox events. It means you don't need this plugin events!
 
+Options
+--------
+__placeholder__ : placeholder - string
+__placeholderclass__ : classname that added when shows placeholder - string (default: "placeholder")
+__clear__ : Add Clear Feature - boolean (default: false)
+__onClear__ : onClear - function
+__onItemSelected__ : onItemSelected - function (returns item)
 
 Examples
 --------
@@ -34,6 +41,13 @@ That's all!
 
 Change Log
 --------
+Version 1.1 (3.09.2014) :
+> Added Bower Support
+> Added AMD Support
+> Added Options
+> Added Clear Feature
+> Added Placeholder Feature
+
 Version 0.1.0 (30.11.2013) :
 > Files uploaded to Github
 

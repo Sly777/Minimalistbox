@@ -47,9 +47,28 @@ $colorHover: #FF7428;
 
   .Minimalistbox-result {
     cursor: pointer;
+    position: relative;
+    
     span {
       cursor: pointer;
       display: block;
+    }
+    
+    .Minimalistbox-actionClear {
+      position: absolute;
+      right: 8px;
+      top: 0;
+      font-style: normal;
+    }
+    
+    &.placeholder {
+      span {
+        color: red;
+      }
+      
+      .Minimalistbox-actionClear {
+        display: none;
+      }
     }
   }
 

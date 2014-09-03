@@ -6,3 +6,14 @@
 *.ear
 *.idea
 /.idea
+
+### Bower ###
+bower_components
+thirdparty
+
+### grunt ###
+# Grunt usually compiles files inside this directory
+dist/
+
+# Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
+.tmp/

@@ -1,13 +1,28 @@
 /*
- * Minimalistbox - V.0.1
+ * Minimalistbox
  * Created by : Ilker Guller
  * Website : http://www.ilkerguller.com
  * Github : https://github.com/Sly777/Minimalistbox
  * */
+/* global jQuery,define */
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+})(function ($) {
+    "use strict";
 
- (function ($, undefined) {
     var pluginName = "Minimalistbox",
         defaults = {
+            placeholder: '',
+            clear: false,
+            onClear: null,
+            onItemSelected: null,
+            placeholderclass: 'placeholder'
         };
 
     function Plugin ( element, options ) {
@@ -28,8 +43,8 @@
             if (navigator.appName == 'Microsoft Internet Explorer')
             {
                 var ua = navigator.userAgent;
-                var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-                if (re.exec(ua) != null)
+                var re = new RegExp(/MSIE ([0-9]{1,}[\.0-9]{0,})/);
+                if (re.exec(ua) !== null)
                     rv = parseFloat( RegExp.$1 );
             }
             return rv;
@@ -70,6 +85,10 @@
 
             $SelectedItem.addClass(this._name + "-result");
 
+            if(this.settings.clear) {
+                $SelectedItem.append('<i class="' + this._name + '-actionClear">X</i>');
+            }
+
             $el.append($SelectedItem);
             $el.append($Items);
 
@@ -90,6 +109,41 @@
             this.$parent.on("click", "." + self._name + "-result", function() {
                 self.$parent.toggleClass(self._name + "-active");
             });
+
+            if(this.settings.clear) {
+                this.$parent.on("click", "." + self._name + "-actionClear", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    self.onClear();
+
+                    if(self.settings.placeholder !== '') {
+                        self.addPlaceHolder();
+                    } else {
+                        self.changeSelectedItem(self.$el.find('option:eq(0)').text());
+                    }
+                });
+            }
+        },
+        addPlaceHolder: function() {
+            var $SelectedItem = this.$parent.find("." + this._name + "-result");
+
+            $SelectedItem
+                .addClass(this.settings.placeholderclass)
+                .find("span")
+                .text(this.settings.placeholder);
+        },
+        onClear: function() {
+            var $Items = this.$parent.find("." + this._name + "-items"),
+                $select = this.$el;
+
+            $select.find("option:selected").prop("selected", false);
+            $Items.find("." + this._name + "-selected").removeClass(this._name + "-selected");
+            $select.trigger("clear");
+
+            if(this.settings.onItemSelected !== null && typeof this.settings.onClear === 'function') {
+                this.settings.onClear();
+            }
         },
         onItemSelected: function($Item) {
             var $Items = this.$parent.find("." + this._name + "-items"),
@@ -101,18 +155,30 @@
             $select.trigger("change");
             this.changeSelectedItem($Item.text());
             this.$parent.toggleClass(this._name + "-active");
+
+            if(this.settings.onItemSelected !== null && typeof this.settings.onItemSelected === 'function') {
+                this.settings.onItemSelected($Item);
+            }
         },
         changeSelectedItem: function(text) {
             var $select = this.$el;
             var $SelectedItem = this.$parent.find("." + this._name + "-result");
 
+            if($SelectedItem.hasClass(this.settings.placeholderclass)) {
+                $SelectedItem.removeClass(this.settings.placeholderclass);
+            }
+
             if(text) {
                 $SelectedItem.find("span").text(text);
             } else {
-                if($select.find('option:selected').length > 0) {
+                if($select.find('option:selected').length > 0 && $select.find('option:selected').attr('selected')) {
                     $SelectedItem.find("span").text($select.find('option:selected').text());
                 } else {
-                    $SelectedItem.find("span").text($select.find('option:eq(0)').text());
+                    if(this.settings.placeholder !== '') {
+                        this.addPlaceHolder();
+                    } else {
+                        $SelectedItem.find("span").text($select.find('option:eq(0)').text());
+                    }
                 }
             }
         }
@@ -125,4 +191,4 @@
             }
         });
     };
-})( jQuery );
+});

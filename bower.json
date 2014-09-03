@@ -1,0 +1,31 @@
+{
+  "name": "Minimalistbox",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Sly777/Minimalistbox",
+  "authors": [
+    "İlker Güller <me@ilkerguller.com>"
+  ],
+  "description": "Minimalist Select Boxes",
+  "keywords": [
+    "Selectbox",
+    "Listbox",
+    "minimal",
+    "1k",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.*"
+  },
+  "repository": {
+	  "type": "git",
+	  "url": "https://github.com/Sly777/Minimalistbox.git"
+	}
+}
